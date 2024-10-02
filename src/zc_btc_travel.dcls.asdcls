@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for Travel BO Proj View'
+@MappingRole: true
+define role ZC_BTC_TRAVEL {
+    grant
+        select
+            on
+                ZC_BTC_TRAVEL
+                    where
+                        inheriting conditions from entity ZI_BTC_Travel;
+                        
+}

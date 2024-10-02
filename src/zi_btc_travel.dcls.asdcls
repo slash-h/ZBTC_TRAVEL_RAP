@@ -1,0 +1,16 @@
+@EndUserText.label: 'Access control for Travel BO'
+@MappingRole: true
+define role ZI_BTC_TRAVEL {
+    grant
+        select
+            on
+                ZI_BTC_TRAVEL
+                    where
+                        CurrencyCode = 'EUR'
+                        and
+                        ( TravelStatus ) = aspect pfcg_auth( ZOSTAT_BTC, ZOSTAT_BTC, ACTVT = '03')
+                        or 
+                        true  // workaround to bypass the authorization as we cannot assign the above auth object / role to our user in ABAP trial environment. View all data  
+                        ;
+                        
+}
